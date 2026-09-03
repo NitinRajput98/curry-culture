@@ -63,7 +63,29 @@ Plain HTML/CSS/JS, no build step, no framework:
 - `css/style.css` (single stylesheet, dark/gold design system)
 - `js/main.js` (mobile nav toggle)
 - `assets/img/` — real photos, descriptively named (see below)
-- `assets/favicon.svg` — CC monogram favicon
+- `assets/favicon/` — full favicon package (2026-09-03), supplied by the
+  owner (looks like standard output from a favicon generator tool, e.g.
+  realfavicongenerator.net): `favicon.ico` (32/48px), `favicon-96x96.png`,
+  `favicon.svg` (a raster logo re-embedded in an SVG wrapper via base64 —
+  not true vector art, but scales fine as a favicon), `apple-touch-icon.png`
+  (180px), `web-app-manifest-192x192.png` / `-512x512.png`, and
+  `site.webmanifest`. All 5 pages now link this set:
+  `<link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96">`,
+  an SVG icon link, `rel="shortcut icon"` → `favicon.ico`,
+  `rel="apple-touch-icon"` → `apple-touch-icon.png`, and
+  `rel="manifest"` → `site.webmanifest`.
+  - The manifest arrived with generator placeholder values (`"name":
+    "MyWebSite"`, white theme/background, and icon `src` paths with a
+    leading `/` implying site-root, which didn't match their actual
+    location alongside the manifest in `assets/favicon/`) — fixed name/
+    short_name to the real business name, `theme_color`/`background_color`
+    to match the site's dark palette (`#14100d`), and dropped the leading
+    slash from icon paths so they resolve relative to the manifest.
+  - This replaced an earlier throwaway attempt where the assistant manually
+    cropped/resized `curry-culture-logo.jpg` with Jimp to build a favicon
+    (documented previously in this file) — that approach is now moot; the
+    owner-supplied package is what's live. The old standalone
+    `assets/favicon.ico` / `assets/favicon-32.png` files were deleted.
 - `robots.txt` (allows crawling, points to sitemap.xml)
 - `sitemap.xml` (still has `YOUR-DOMAIN-HERE` placeholder — needs the real
   domain once purchased)
@@ -105,6 +127,39 @@ needed — all references were updated first.)
 - Local preview: no system Python; use `npx serve .` (Node is installed) or
   VS Code Live Server. `serve` redirects `/foo.html` → `/foo` — that's
   normal, not a bug.
+
+## Order Online (Uber Eats)
+
+An "Order Online" button linking to the restaurant's Uber Eats store page
+was added on 2026-09-03:
+`https://www.ubereats.com/nz/store/curry-culture-indian-kitchen-%26-bar/y7F8v4P-XNav4LB9QAreiw`
+(the owner supplied this URL directly — the assistant does not scrape/guess
+real business URLs). It appears as the primary CTA in the header nav on all
+5 pages, the homepage hero, and the contact page action row. On mobile, the
+compact header only shows the logo + hamburger toggle (`.nav__cta .btn` is
+hidden below 880px, same as before); "Order Online" and "Call to Book" are
+duplicated as full-width buttons inside the expanding mobile menu
+(`.nav__links-mobile-cta`) so they stay reachable on small screens. If the
+Uber Eats store link ever changes (e.g. Uber Eats re-issues store IDs),
+search-replace this URL across `index.html`, `menu.html`, `about.html`,
+`gallery.html`, `contact.html`.
+
+## Alcohol content removed (2026-09-03)
+
+Per the owner's instruction ("not allowed for projecting alcohol"), all
+drinks/alcohol marketing content was stripped from the site:
+- `menu.html`: removed the entire "Drinks Menu" section (beer/cider, wine,
+  non-alcoholic drinks, happy hour) and its nav-jump link; trimmed "and
+  drinks" from the meta description.
+- `index.html`: removed the "Full Bar" feature card (grid changed from
+  `grid--3` to `grid--2` for the remaining 2 cards); removed "and a full
+  bar" from the hero paragraph, meta description, and `og:description`.
+- `about.html`: removed "alongside a full bar" from the story paragraph.
+- **Not changed**: the business's legal name, "Curry Culture Indian Kitchen
+  & Bar", still appears in titles, alt text, JSON-LD `name`, and copyright
+  lines — that's the real registered business name, not alcohol marketing,
+  and renaming it would misrepresent the business. Flag this distinction if
+  asked to do a further alcohol-content pass.
 
 ## Outstanding TODO (also tracked in `README.md` §5.4)
 

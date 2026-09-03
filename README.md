@@ -18,7 +18,8 @@ curry-culture/
 ├── contact.html       Address, hours, map embed, enquiry form
 ├── css/style.css      Design system (colors, type, layout) — single stylesheet
 ├── js/main.js         Mobile nav toggle + active-link highlighting
-├── assets/            Images, favicon.svg
+├── assets/            Images, favicon/ (favicon.ico, .svg, apple-touch-icon,
+│                      web-app-manifest icons, site.webmanifest)
 ├── robots.txt         Allows crawling, points to sitemap.xml
 └── sitemap.xml        Page list for search engines
 ```
