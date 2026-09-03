@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Template only. If you deploy this for real (with your own unrelated business
+  content), replace YOUR-DOMAIN-HERE with your actual domain and update
+  robots.txt to allow crawling.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://YOUR-DOMAIN-HERE.co.nz/</loc><priority>1.0</priority></url>
+  <url><loc>https://YOUR-DOMAIN-HERE.co.nz/menu.html</loc><priority>0.9</priority></url>
+  <url><loc>https://YOUR-DOMAIN-HERE.co.nz/about.html</loc><priority>0.7</priority></url>
+  <url><loc>https://YOUR-DOMAIN-HERE.co.nz/gallery.html</loc><priority>0.6</priority></url>
+  <url><loc>https://YOUR-DOMAIN-HERE.co.nz/contact.html</loc><priority>0.8</priority></url>
+</urlset>
